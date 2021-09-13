@@ -4,9 +4,9 @@
 <h1>Latest tickets</h1>
 {% for ticket in tickets %}
 <h2><a href="/tickets/admin/{{ ticket.id }}">Ticket {{ ticket.id }}</a></h2>
-<p>by <strong>{{ticket.author}}</strong></p>
-<p>created <strong>{{ ticket.created }}</strong></p>
-<p>{% if ticket.opened %}Waiting for reply{% else %}Closed{% endif %}</p>
+<p>by <strong>{{ticket.author}}</strong><br/>
+created <strong>{{ ticket.created }}</strong><br/>
+{% if ticket.opened %}Waiting for reply{% else %}Closed{% endif %}</p>
 {% endfor %}
 </article>
 {% endblock %}
