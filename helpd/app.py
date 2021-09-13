@@ -53,7 +53,7 @@ def login_post():
     # TODO: fix
     flask.session["user_id"] = 1
 
-    return flask.redirect(flask.url_for("/admin"), code=303)
+    return flask.redirect(flask.url_for("admin"), code=303)
 
 
 @app.route("/admin")
