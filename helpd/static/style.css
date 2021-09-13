@@ -47,6 +47,10 @@ footer {
     font-size: 0.75rem;
 }
 
+h1 {
+    margin-bottom: 0.5rem;
+}
+
 h2 {
     font-size: inherit;
     margin: 0;
