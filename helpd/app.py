@@ -42,6 +42,8 @@ def index():
     return flask.render_template("index.html")
 
 
+app.secret_key = b"Nc9JMybCwbJ9TtHDSupYGKcUrTQwFPYq"
+
 @app.route("/login", methods=["POST"])
 def login_post():
     """Logins a user."""
@@ -50,6 +52,16 @@ def login_post():
     flask.session["user_id"] = 1
 
     return flask.redirect(flask.url_for("/admin"), code=303)
+
+
+@app.route("/admin")
+def admin():
+    """Handles admin interface."""
+
+    if "user_id" in flask.session:
+        return f"Hello admin {flask.session['user_id']}"
+    else:
+        return flask.redirect(flask.url_for("/"), code=303)
 
 
 def main():
