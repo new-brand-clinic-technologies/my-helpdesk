@@ -7,7 +7,7 @@ import sqlalchemy
 
 from sqlalchemy.orm import sessionmaker
 
-from .models import Base, User, Ticket
+from helpd.models import Base, User, Ticket
 
 app = flask.Flask(__name__)
 
