@@ -1,3 +1,9 @@
+{% extends "base.html" %}
+{% block main %}
+<h1>Latest tickets</h1>
 {% for ticket in tickets %}
-{{ ticket.id }}
+<h2>Ticket {{ ticket.id }}</h2>
+<p>by <strong>{{ticket.author}}</strong></p>
+<p>created <strong>{{ ticket.created }}</strong></p>
+<p>{% if ticket.opened %}Waiting for reply{% else %}Closed{% endif %}</p>
 {% endfor %}
