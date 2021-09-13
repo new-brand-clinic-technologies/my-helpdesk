@@ -45,6 +45,24 @@ def index():
     return flask.render_template("index.html")
 
 
+@app.route("/login", methods=["POST"])
+def login():
+    username = flask.request.form.get("login", "")
+    password = flask.request.form.get("password", "")
+
+    user = (flask.g.db.query(User)
+            .filter(User.login == username)
+            .filter(User.password == password)
+            .one_or_none())
+
+    if user is None:
+        flask.flash("Incorrect password")
+        return flask.redirect(flask.url_for("index"), code=303)
+
+    flask.session["user_id"] = user.id
+    return flask.redirect(flask.url_for("tickets"), code=303)
+
+
 @app.route("/tickets")
 def tickets():
     """Render tickets list."""
@@ -79,7 +97,12 @@ def post_ticket(ticket_id):
 
     ticket = (flask.g.db.query(Ticket)
               .filter(Ticket.id == ticket_id)
-              .one())
+              .one_or_none())
+    if ticket is None:
+        return flask.abort(404)
+    if not ticket.opened:
+        return flask.abort(400)
+
     ticket.opened = False
     ticket.response = flask.request.form.get("response", "")
     flask.g.db.add(ticket)
