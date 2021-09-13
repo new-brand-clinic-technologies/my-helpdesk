@@ -2,8 +2,8 @@
 {% block main %}
 <article style="width: 80vw; max-width: 1000px; box-sizing: border-box;">
 <h1>Ticket {{ ticket.id }}</h1>
-<p>by <strong>{{ticket.author}}</strong></p>
-<p>created <strong>{{ ticket.created }}</strong></p>
+<p>by <strong>{{ticket.author}}</strong><br/>
+created <strong>{{ ticket.created }}</strong></p>
 <p>{{ ticket.request }}</p>
 {% if ticket.opened %}
 <h2>Response here:</h2>
