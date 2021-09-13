@@ -46,3 +46,8 @@ footer {
     background: lightgray;
     font-size: 0.75rem;
 }
+
+h2 {
+    font-size: inherit;
+    margin: 0;
+}
