@@ -71,6 +71,21 @@ def get_ticket(ticket_id):
 
     return flask.render_template("ticket.html", is_admin=True, ticket=ticket)
 
+@app.route("/tickets/admin/<ticket_id>", methods=["POST"])
+def post_ticket(ticket_id):
+    """Sends reply to ticket."""
+    if "user_id" not in flask.session:
+        return flask.redirect(flask.url_for("index"), code=303)
+
+    ticket = (flask.g.db.query(Ticket)
+              .filter(Ticket.id == ticket_id)
+              .one())
+    ticket.opened = False
+    ticket.response = flask.request.form.get("response", "")
+    flask.g.db.add(ticket)
+
+    return flask.redirect(flask.url_for("get_ticket", ticket_id=ticket_id), code=303)
+
 
 def main():
     """Run application in debug mode."""
