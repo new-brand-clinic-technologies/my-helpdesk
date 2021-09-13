@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 """Main application module."""
 
+import os
+
 import flask
 import sqlalchemy
 
@@ -42,7 +44,7 @@ def index():
     return flask.render_template("index.html")
 
 
-app.secret_key = b"Nc9JMybCwbJ9TtHDSupYGKcUrTQwFPYq"
+app.secret_key = os.environ["SECRET_KEY"]
 
 @app.route("/login", methods=["POST"])
 def login_post():
@@ -61,7 +63,7 @@ def admin():
     if "user_id" in flask.session:
         return f"Hello admin {flask.session['user_id']}"
     else:
-        return flask.redirect(flask.url_for("/"), code=303)
+        return flask.redirect(flask.url_for("index"), code=303)
 
 
 def main():
