@@ -59,7 +59,7 @@ def tickets():
     return flask.render_template("tickets.html", tickets=tickets_list)
 
 
-@app.route("/tickets/admin/<ticket_id>", method=["GET"])
+@app.route("/tickets/admin/<ticket_id>", methods=["GET"])
 def get_ticket(ticket_id):
     """Render ticket for reply."""
     if "user_id" in flask.session:
