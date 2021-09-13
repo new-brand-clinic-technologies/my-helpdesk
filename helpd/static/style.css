@@ -56,3 +56,7 @@ input, textarea, button {
     font: inherit;
     display: block;
 }
+
+textarea {
+    min-width: 40vw;
+}
