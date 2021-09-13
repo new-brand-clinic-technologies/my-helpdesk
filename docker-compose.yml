@@ -6,11 +6,11 @@ services:
     environment:
       - POSTGRES_DB=help
       - POSTGRES_USER=help
-      - POSTGRES_PASS=help
+      - POSTGRES_PASSWORD=help
   app:
-    build: app
+    build: helpd
     restart: always
     volumes:
-      - ./app:/app
+      - ./helpd:/helpd
     ports:
       - 127.0.0.1:55255:80
