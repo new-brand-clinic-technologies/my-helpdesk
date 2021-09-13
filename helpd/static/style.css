@@ -47,6 +47,10 @@ footer {
     font-size: 0.75rem;
 }
 
+h1 {
+    margin-bottom: 0.5rem;
+}
+
 h2 {
     font-size: inherit;
     margin: 0;
@@ -54,4 +58,9 @@ h2 {
 
 input, textarea, button {
     font: inherit;
+    display: block;
+}
+
+textarea {
+    min-width: 40vw;
 }
