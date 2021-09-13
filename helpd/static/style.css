@@ -52,6 +52,6 @@ h2 {
     margin: 0;
 }
 
-input {
+input, textarea, button {
     font: inherit;
 }
