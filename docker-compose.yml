@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    restart: always
+    env:
+      - POSTGRES_DB=help
+      - POSTGRES_USER=help
+      - POSTGRES_PASS=help
+  app:
+    build: app
+    restart: always
+    volumes:
+      - ./app:/app
+    ports:
+      - 127.0.0.1:55255:80
