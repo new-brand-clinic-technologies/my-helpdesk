@@ -62,8 +62,8 @@ def admin():
 
     if "user_id" in flask.session:
         return f"Hello admin {flask.session['user_id']}"
-    else:
-        return flask.redirect(flask.url_for("index"), code=303)
+
+    return flask.redirect(flask.url_for("index"), code=303)
 
 
 def main():
