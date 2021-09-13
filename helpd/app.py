@@ -2,7 +2,9 @@
 # -*- coding: utf-8 -*-
 """Main application module."""
 
+import datetime
 import os
+import uuid
 
 import flask
 import sqlalchemy
@@ -61,6 +63,30 @@ def login():
 
     flask.session["user_id"] = user.id
     return flask.redirect(flask.url_for("tickets"), code=303)
+
+
+@app.route("/ticket", methods=["POST"])
+def create_ticket():
+    """Creates a ticket."""
+    author = flask.request.form.get("name", "").strip()
+    text = flask.request.form.get("question", "").strip()
+    if author == "" or text == "":
+        return flask.abort(400)
+
+    tid = uuid.uuid4()
+    ticket = Ticket(
+        id=tid,
+        created=datetime.datetime.now(),
+        author=author,
+        request=text
+    )
+
+    ticket.opened = False
+    ticket.response = "Thank you for your question! Unfortunately, all our support team members are busy now. Please try to ask later! Your feedback is very important for us."
+
+    flask.g.db.add(ticket)
+
+    return flask.redirect(flask.url_for("ticket_not_admin", ticket_id=tid), code=303)
 
 
 @app.route("/tickets")
