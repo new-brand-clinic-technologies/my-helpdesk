@@ -48,7 +48,7 @@ def index():
 @app.route("/tickets")
 def tickets():
     """Render tickets list."""
-    if "user_id" in flask.session:
+    if "user_id" not in flask.session:
         return flask.redirect(flask.url_for("index"), code=303)
 
     tickets_list = (flask.g.db.query(Ticket)
@@ -62,7 +62,7 @@ def tickets():
 @app.route("/tickets/admin/<ticket_id>", methods=["GET"])
 def get_ticket(ticket_id):
     """Render ticket for reply."""
-    if "user_id" in flask.session:
+    if "user_id" not in flask.session:
         return flask.redirect(flask.url_for("index"), code=303)
 
     ticket = (flask.g.db.query(Ticket)
