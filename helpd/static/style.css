@@ -1,9 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Glory:wght@200;800&display=swap');
+
 html, body {
     margin: 0;
     padding: 0;
 }
 
+html {
+    font-size: 18px;
+    font-family: 'Glory', sans-serif;
+}
+
 header {
+    box-sizing: border-box;
     background-color: lightgoldenrodyellow;
     padding: 0.5rem;
+    height: 6rem;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 599px) {
+    main {
+        flex-direction: column;
+    }
+}
+
+article {
+    background-color: lightskyblue;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+main {
+    min-height: calc(100vh - 9rem);
+}
+
+footer {
+    box-sizing: border-box;
+    height: 3rem;
+    padding: 0.5rem;
+    background: lightgray;
+    font-size: 0.75rem;
+}
+
+h2 {
+    font-size: inherit;
+    margin: 0;
+}
+
+input, textarea, button {
+    font: inherit;
 }
