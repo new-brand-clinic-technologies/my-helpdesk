@@ -8,7 +8,7 @@ created <strong>{{ ticket.created }}</strong></p>
 {% if ticket.opened %}
 <h2>Response here:</h2>
 <form method="post" action="">
-    <textarea name="response"></textarea>
+    <textarea name="response" required></textarea>
     <button>Send</button>
 </form>
 {% else %}
