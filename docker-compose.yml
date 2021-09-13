@@ -3,7 +3,7 @@ services:
   db:
     image: postgres
     restart: always
-    env:
+    environment:
       - POSTGRES_DB=help
       - POSTGRES_USER=help
       - POSTGRES_PASS=help
