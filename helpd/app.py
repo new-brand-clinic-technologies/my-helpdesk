@@ -60,10 +60,9 @@ def login_post():
 def admin():
     """Handles admin interface."""
 
-    if "user_id" in flask.session:
-        return f"Hello admin {flask.session['user_id']}"
-
-    return flask.redirect(flask.url_for("index"), code=303)
+    if "user_id" not in flask.session:
+        return flask.redirect(flask.url_for("index"), code=303)
+    return f"Hello admin {flask.session['user_id']}"
 
 
 def main():
