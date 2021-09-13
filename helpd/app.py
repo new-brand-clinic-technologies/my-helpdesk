@@ -89,6 +89,16 @@ def create_ticket():
     return flask.redirect(flask.url_for("ticket_not_admin", ticket_id=tid), code=303)
 
 
+@app.route("/tickets/<ticket_id>")
+def ticket_not_admin(ticket_id):
+    """Render ticket for reply."""
+    ticket = (flask.g.db.query(Ticket)
+              .filter(Ticket.id == ticket_id)
+              .one())
+
+    return flask.render_template("ticket.html", is_admin=False, ticket=ticket)
+
+
 @app.route("/tickets")
 def tickets():
     """Render tickets list."""
