@@ -6,11 +6,17 @@
 created <strong>{{ ticket.created }}</strong></p>
 <p>{{ ticket.request }}</p>
 {% if ticket.opened %}
+{% if is_admin %}
 <h2>Response here:</h2>
 <form method="post" action="">
-    <textarea name="response"></textarea>
+    <textarea name="response" required></textarea>
     <button>Send</button>
 </form>
+{% else %}
+<h2>Please wait for response</h2>
+<p>This page will update automatically...</p>
+<meta http-equiv="refresh" content="5;url=" />
+{% endif %}
 {% else %}
 <h2>Response</h2>
 <p>{{ ticket.response }}</p>
