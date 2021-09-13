@@ -9,4 +9,12 @@ This application is made in our clinic for our patients to send us feedback abou
 
 ## How To Run
 
-TODO!
+Use Docker to run the software.
+
+```
+docker-compose up -d --build
+```
+
+I'm debugging it for now, but you should succeed.
+
+License - Apache 2.0. Actively maintaining.
