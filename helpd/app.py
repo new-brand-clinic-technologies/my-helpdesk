@@ -62,8 +62,6 @@ def login():
     flask.session["user_id"] = user.id
     return flask.redirect(flask.url_for("tickets"), code=303)
 
-    
-
 
 @app.route("/tickets")
 def tickets():
