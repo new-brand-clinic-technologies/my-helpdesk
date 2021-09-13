@@ -54,4 +54,5 @@ h2 {
 
 input, textarea, button {
     font: inherit;
+    display: block;
 }
