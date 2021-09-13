@@ -1,3 +1,12 @@
+{% extends "base.html" %}
+{% block main %}
+<article style="width: 80vw; max-width: 1000px; box-sizing: border-box;">
+<h1>Latest tickets</h1>
 {% for ticket in tickets %}
-{{ ticket.id }}
+<h2><a href="/tickets/admin/{{ ticket.id }}">Ticket {{ ticket.id }}</a></h2>
+<p>by <strong>{{ticket.author}}</strong><br/>
+created <strong>{{ ticket.created }}</strong><br/>
+{% if ticket.opened %}Waiting for reply{% else %}Closed{% endif %}</p>
 {% endfor %}
+</article>
+{% endblock %}

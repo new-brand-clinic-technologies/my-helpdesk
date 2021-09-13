@@ -1,38 +1,19 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <title>Help Desk</title>
-
-        <link rel="stylesheet" href="/static/style.css" />
-    </head>
-    <body>
-        <header>
-            <h1>Help Desk System</h1>
-        </header>
-        <main>
-            <article>
-                <h1>Ask your question</h1>
-                <form action="" method="POST">
-                    <textarea name="question"></textarea>
-                    <button>Ask</button>
-                </form>
-            </article>
-            <article>
-                <h1>Login</h1>
-                <h2>for staff only</h2>
-                <form action="/login" method="POST">
-                    <input type="text" name="login" placeholder="Login" />
-                    <input type="password" name="password" placeholder="Password" />
-                    <button>Login</button>
-                </form>
-            </article>
-        </main>
-        <footer>
-            Copyright &copy; State-Owned Budgetary Health Institution “City Clinic Hospital No 4”<br/>
-            This software is <a href="https://github.com/new-brand-clinic-technologies/my-helpdesk" target="_blank"><img alt="Open Source" src="/static/os.png" style="max-height: 1.2rem; vertical-align: bottom;" /></a>
-        </footer>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block main %}
+<article>
+    <h1>Ask your question</h1>
+    <form action="" method="POST">
+        <textarea name="question"></textarea>
+        <button>Ask</button>
+    </form>
+</article>
+<article>
+    <h1>Login</h1>
+    <h2>for staff only</h2>
+    <form action="/login" method="POST">
+        <input type="text" name="login" placeholder="Login" />
+        <input type="password" name="password" placeholder="Password" />
+        <button>Login</button>
+    </form>
+</article>
+{% endblock %}
