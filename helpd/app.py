@@ -42,6 +42,16 @@ def index():
     return flask.render_template("index.html")
 
 
+@app.route("/login", methods=["POST"])
+def login_post():
+    """Logins a user."""
+
+    # TODO: fix
+    flask.session["user_id"] = 1
+
+    return flask.redirect(flask.url_for("/admin"), code=303)
+
+
 def main():
     """Run application in debug mode."""
     app.run(port=8080, debug=True)
